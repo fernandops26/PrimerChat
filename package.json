@@ -1,0 +1,17 @@
+{
+  "name": "chat",
+  "version": "0.0.1",
+  "descripcion": "Aplicacion Chat de Prueba",
+  "dependencies": {
+    "body-parser": "*",
+    "express": "*",
+    "jade": "*",
+    "multer": "*"
+  },
+ 	"devDependencies":{},
+ 	"scripts":{
+ 		"start": "node app.js"
+ 	},
+ 	"author": "Jorge Fernando Palacios Sánchez",
+ 	"license": "ISC"
+}

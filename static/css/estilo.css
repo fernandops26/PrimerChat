@@ -1,0 +1,34 @@
+ body{
+    background: #DE0E13;
+ }
+ #chat{
+            height:500px;
+            width:600px;
+            border:solid black;
+            border-style:groove;
+            float:left;
+            overflow:scroll;
+            padding:2px;
+        }
+ 
+        #formulario{
+            clear:both;
+        }
+ 
+        #notificaciones{
+            width:500px;
+            vertical-align: bottom;
+            -moz-border-radius: 15px;
+            border-radius: 15px;
+            text-align: center;
+            color:white;
+            display:none;
+            float:left;
+            padding: 2px 0;
+        }
+        img{
+            width:580px;
+        }
+        strong{
+            background: #38A4F7;
+        }

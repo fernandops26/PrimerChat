@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <title>Chat con Websockets versión 1.1</title>
+    <style>
+        #chat{
+            height:500px;
+            width:600px;
+            border:solid black;
+            border-style:groove;
+            float:left;
+            overflow:scroll;
+            padding:2px;
+        }
+ 
+        #formulario{
+            clear:both;
+        }
+ 
+        #notificaciones{
+            width:500px;
+            vertical-align: bottom;
+            -moz-border-radius: 15px;
+            border-radius: 15px;
+            text-align: center;
+            color:white;
+            display:none;
+            float:left;
+            padding: 2px 0;
+        }
+        img{
+            width:580px;
+        }
+    </style>
+    <script src="/scripts/jquery-1.7.1.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+    <h1>Multi-user chat con websockets </h1>
+    <h3>Servidor en VM Debian con express + socket.io + Node.js</h3>
+    <h5>Se permite el envío de imágenes al chat. Copie y pegue la URL de la imagen en la casilla "Enviar".</h5>
+    <div id="chat"></div>
+    <form id="formulario">
+        <input size="50" id="casillatexto"/>
+        <input type="submit" value='Enviar'/><br/>
+        Conectado con el nick:<strong> <span id='usuario'></span></strong>
+    </form>
+ 
+    <div id="notificaciones"></div>
+</body>
+</html>

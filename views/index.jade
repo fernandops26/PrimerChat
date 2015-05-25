@@ -1,0 +1,168 @@
+html
+	head
+		meta(charset="UTF-8")
+		Title Chat con websockets
+		style.
+			#chat{
+			height:400px;
+			background:#383434;
+			/*width:600px;*/
+			border: solid black;
+			border-style:groove;
+			padding: 0 3px 3px 3px;
+			overflow:scroll;
+			border-radius:10px;
+			/*padding:2px;*/
+			}
+			#cabecera{
+			background:#38509C;
+			color:white;
+			text-align:center;
+			}
+			#listaUsuarios{
+			text-align:center;
+			height: 390px;
+			background:#1D1B1B;
+			border-radius:10px;
+			color:#FFFFFF;
+			font-size:1.5em;
+			margin: 5px 0;
+			overflow:scroll;
+			}
+
+			#formulario{
+			clear:both;
+			}
+			#casillatexto{
+			width: 100%;
+			border-radius:10px;
+			padding:10px 0px;
+			border-style:none;
+			}
+			#notificaciones{
+			width:500px;
+			/*vertical-align:top;*/
+			-moz-border-radius:15px;
+			text-align:center;
+			color:white;
+			/*display:none;*/
+			/*padding:2px 2px;*/
+			}
+			#btEnviar{
+				background:#4564C9;
+				color:white;
+				width:100%;
+				border-radius:5px;
+				text-align:center;
+				padding:10px 0;
+				border-style:none;
+			}
+			#usuario{
+				background:#1D1B1B;
+				color:white;
+				height: 50px;
+				border-radius:10px;
+				text-align: center;
+				font-size:1.3em;
+			}
+			#usuario{
+				margin:0 auto;
+				font-size:1.5em;
+				font-family:cursive;
+			}
+			#opciones{
+				background:#1D1B1B;
+				border-radius:10px;
+				padding: 10px 5px;
+			}
+			
+			.online{
+			text-align:center;
+			border-radius:7px;
+			background:#4F4242;
+			margin-top:15px;
+			}
+					
+			
+			p{
+				margin:0;
+				font-size:1.5em;
+				font-family: cursive;
+			}
+			#contenedorfile{
+			color:white;
+			border-radius:5px;
+			background:url('/static/img/flecha.png');
+			background-color:#31AF72;
+			background-repeat:no-repeat;
+			background-position:center;
+			text-align:center;
+			height:35px;
+			}
+			input[type="file"]{
+			top:0
+			right:0;
+			width: 12%;
+			height: 60%;
+			text-align: right;
+			filter: alpha(opacity=0);
+			opacity: 0;
+			cursor: inherit;
+			display: block;
+			position:absolute;
+
+			}
+			.cabeceraMsj{
+				/*background:#56CE72;*/
+				height:1.7em;
+				padding-top:3px;
+				border-radius:5px 5px 0 0;
+			}
+			.cuerpoMsj{
+				background:#EDE5E5;
+				border-radius: 0 0 5px 5px;
+				color:black;
+				font-size:1.2em;
+				text-align:justify;
+			}
+			
+			#mensajeUsuario{
+				text-align:left;
+				color:white;
+				/*padding:2px 5px;*/
+				margin-top:7px;
+				padding:0;
+			}
+		script(src="/static/scripts/jquery-2.1.4.js")
+		link(rel="stylesheet", type="text/css", href="/static/css/ed-grid.css")
+		script(src="/socket.io/socket.io.js")
+		script(src="/static/scripts/usuario.js")
+	body
+		div(id="notificaciones" class="grupo total")
+		div(class="grupo total" id="cabecera")
+			h1 Chat con websockets
+			h3 Servidor con express+ socket.io+ node.js
+			h5 Se permite el envio de imagenes en el chat. Copie y pege el URL de la imagen en la casilla
+		br
+		form
+			div(class="grupo")
+				div(class="caja")
+					input(type="text" placeholder="Alias")
+					input(type="submit")
+		div(class="grupo")
+			div(class="caja tablet-75 ")
+				div(id="chat")
+				form(id="formulario" enctype="multipart/form-data")
+					div(class="grupo" id="opciones")
+						div(class="caja base-5-8")
+							input(type="text",id="casillatexto" placeholder="Escribe tu mensaje aqui")
+						div(class="caja base-2-8 no-padding")
+							input(type="submit",value="Enviar",id="btEnviar")
+						div(class="caja base-1-8 no-padding")
+							div(class="caja" id="contenedorfile")
+							input(type="file" id="imgfile")
+			div(class="caja tablet-25")
+				div(class="caja centrar-contenido" id="usuario")
+				div(class="caja" id="listaUsuarios")
+
+		
