@@ -1,52 +1,53 @@
 html
 	head
 		meta(charset="UTF-8")
+		meta(name="viewport" content="width=device-width, initial-scale=0.8, maximum-scale=1")
 		Title Chat con websockets
 		style.
 			#chat{
-			height:400px;
-			background:#383434;
-			/*width:600px;*/
-			border: solid black;
-			border-style:groove;
-			padding: 0 3px 3px 3px;
-			overflow:scroll;
-			border-radius:10px;
-			/*padding:2px;*/
+				height:400px;
+				background:#383434;
+				/*width:600px;*/
+				border: solid black;
+				border-style:groove;
+				padding: 0 3px 3px 3px;
+				overflow:scroll;
+				border-radius:10px;
+				/*padding:2px;*/
 			}
 			#cabecera{
-			background:#38509C;
-			color:white;
-			text-align:center;
+				background:#38509C;
+				color:white;
+				text-align:center;
 			}
 			#listaUsuarios{
-			text-align:center;
-			height: 390px;
-			background:#1D1B1B;
-			border-radius:10px;
-			color:#FFFFFF;
-			font-size:1.5em;
-			margin: 5px 0;
-			overflow:scroll;
+				text-align:center;
+				height: 390px;
+				background:#1D1B1B;
+				border-radius:10px;
+				color:#FFFFFF;
+				font-size:1.5em;
+				margin: 5px 0;
+				overflow:scroll;
 			}
 
 			#formulario{
-			clear:both;
+				clear:both;
 			}
 			#casillatexto{
-			width: 100%;
-			border-radius:10px;
-			padding:10px 0px;
-			border-style:none;
+				width: 100%;
+				border-radius:10px;
+				padding:10px 0px;
+				border-style:none;
 			}
 			#notificaciones{
-			width:500px;
-			/*vertical-align:top;*/
-			-moz-border-radius:15px;
-			text-align:center;
-			color:white;
-			/*display:none;*/
-			/*padding:2px 2px;*/
+				width:500px;
+				/*vertical-align:top;*/
+				-moz-border-radius:15px;
+				text-align:center;
+				color:white;
+				/*display:none;*/
+				/*padding:2px 2px;*/
 			}
 			#btEnviar{
 				background:#4564C9;
@@ -77,10 +78,10 @@ html
 			}
 			
 			.online{
-			text-align:center;
-			border-radius:7px;
-			background:#4F4242;
-			margin-top:15px;
+				text-align:center;
+				border-radius:7px;
+				background:#4F4242;
+				margin-top:15px;
 			}
 					
 			
@@ -90,26 +91,26 @@ html
 				font-family: cursive;
 			}
 			#contenedorfile{
-			color:white;
-			border-radius:5px;
-			background:url('/static/img/flecha.png');
-			background-color:#31AF72;
-			background-repeat:no-repeat;
-			background-position:center;
-			text-align:center;
-			height:35px;
+				color:white;
+				border-radius:5px;
+				background:url('/static/img/flecha.png');
+				background-color:#31AF72;
+				background-repeat:no-repeat;
+				background-position:center;
+				text-align:center;
+				height:35px;
 			}
 			input[type="file"]{
-			top:0
-			right:0;
-			width: 12%;
-			height: 60%;
-			text-align: right;
-			filter: alpha(opacity=0);
-			opacity: 0;
-			cursor: inherit;
-			display: block;
-			position:absolute;
+				top:0
+				right:0;
+				width: 12%;
+				height: 60%;
+				text-align: right;
+				filter: alpha(opacity=0);
+				opacity: 0;
+				cursor: inherit;
+				display: block;
+				position:absolute;
 
 			}
 			.cabeceraMsj{
@@ -133,6 +134,81 @@ html
 				margin-top:7px;
 				padding:0;
 			}
+			#cajaIdentificacion{
+				background:#3B79B9;
+				padding: 30px 0;
+				height:200px;
+				border-radius: 30px;
+			}
+			#cajaIdentificacion input[type="text"]{
+				width:100%;
+				height:100%;
+				border-radius:10px;
+				text-align:center;
+
+			}
+			
+			#formIdentificacion{
+				margin:0;
+			}
+
+			#btIngresar{
+				height:100%;
+				width:100%;
+				background:#2E3051;
+				border-style:none;
+				color:white;
+				font-size:1em;
+				font-family:cursive;
+				text-align:center;
+				margin:0;
+			}
+			
+			#cajaTexto{
+				margin-top:20px;
+				margin-bottom:30px;
+				height:40px;
+			}
+
+			#cajaBoton{
+				background:#2E3051;
+				color:white;
+				height:40px;
+				border-radius:5px;
+				text-align:center;
+			}
+			/*
+			::-webkit-scrollbar{
+				width:5px;
+				height:5px;
+				background:#313C40;
+				width:5px;
+				height:5px;
+			}
+			::-webkit-scrollbar-button{
+				width:5px;
+				height:5px;
+				border-radius:3px;
+				background-color:black;
+			}
+			::-webkit-scrollbar-track{
+				width:5px;
+				height:5px;
+				background-color:orange;
+			}
+
+			::-webkit-scrollbar-track-piece{
+				width:5px;
+				height:5px;
+				background-color:#313C40;
+			}
+			::-webkit-scrollbar-thumb{
+				width:5px;
+				height:5px;
+				background-color:#5D5AA4;
+			}
+			*/
+
 		script(src="/static/scripts/jquery-2.1.4.js")
 		link(rel="stylesheet", type="text/css", href="/static/css/ed-grid.css")
 		script(src="/socket.io/socket.io.js")
@@ -144,12 +220,15 @@ html
 			h3 Servidor con express+ socket.io+ node.js
 			h5 Se permite el envio de imagenes en el chat. Copie y pege el URL de la imagen en la casilla
 		br
-		form
-			div(class="grupo")
-				div(class="caja")
-					input(type="text" placeholder="Alias")
-					input(type="submit")
-		div(class="grupo")
+		div(class="grupo total" id="contIdentificacion")
+			div(class="caja base-75 centro tablet-50" id="cajaIdentificacion")
+				form(id="formIdentificacion")
+					div(class="caja base-75 centro" id="cajaTexto" )
+						input(type="text" placeholder="Alias" id="textoIdent")
+					div(class="caja centro centrar-contenido base-50" id="cajaBoton")
+						input(type="submit" value="Ingresar"  id="btIngresar")
+		br
+		div(class="grupo" id="contChat")
 			div(class="caja tablet-75 ")
 				div(id="chat")
 				form(id="formulario" enctype="multipart/form-data")

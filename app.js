@@ -52,6 +52,7 @@ app.get('*',function(req,res){
 
 
 	socket.on('nuevoMensaje',function(msj){
+		console.log("Nuevo msj de "+ msj['nick']+": "+msj['texto']);
 		socket.randomColor=msj['randomColor'];
 		io.sockets.emit('mensaje',msj);
 	});

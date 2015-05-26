@@ -6,12 +6,13 @@
     "body-parser": "*",
     "express": "*",
     "jade": "*",
-    "multer": "*"
+    "multer": "*",
+    "nodemon": "^1.3.7"
   },
- 	"devDependencies":{},
- 	"scripts":{
- 		"start": "node app.js"
- 	},
- 	"author": "Jorge Fernando Palacios Sánchez",
- 	"license": "ISC"
+  "devDependencies": {},
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "Jorge Fernando Palacios Sánchez",
+  "license": "ISC"
 }
