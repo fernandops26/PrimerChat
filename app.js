@@ -52,14 +52,25 @@ app.get('*',function(req,res){
 
 
 	socket.on('nuevoMensaje',function(msj){
-		console.log("Nuevo msj de "+ msj['nick']+": "+msj['texto']);
-		socket.randomColor=msj['randomColor'];
-		io.sockets.emit('mensaje',msj);
+
+		if(lista[msj['nick']]){
+			console.log("Nuevo msj de "+ msj['nick']+": "+msj['texto']);
+			socket.randomColor=msj['randomColor'];
+			io.sockets.emit('mensaje',msj);
+		}else{
+			socket.emit('no_encontrado');
+		}
+		
 	});
 
 	socket.on('envioImagen',function(img){
-		console.log("Imagen recibida: "+img["texto"]);
-		io.sockets.emit('mensaje',img);
+		if(lista[img['nick']]){
+			console.log("Imagen recibida: "+img["texto"]);
+			io.sockets.emit('mensaje',img);
+		}else{
+			socket.emit('no_encontrado');
+		}
+		
 	});
 
 	socket.on('disconnect',function(){

@@ -1,8 +1,8 @@
+var socket=io.connect();
 
 var nick="";
 var correcto=0;
 var lista={};
-var socket=io.connect();
 var cont=0;
 var randomColor = Math.floor(Math.random()*16777215).toString(16);
 
@@ -24,6 +24,8 @@ $(document).ready(function(){
 	socket.on('respuestaServidor',respuestaServidor);
 
 	socket.on('actualizarLista',actualizarLista);
+
+	socket.on('no_encontrado',regresarALogin);
 
 	$('#formIdentificacion').on('submit',function(e){
 		e.preventDefault();
@@ -109,7 +111,7 @@ function recibirMensaje(msj){
         	$("#chat").append('<div class="caja" id="mensajeUsuario"><div class="caja total cabeceraMsj" style="background-color:'+msj.randomColor+';"><p>'+msj.nick+'</p></div><div class="caja total cuerpoMsj"><div class="caja centrar-contenido"><img class="img" src="'+msj.texto+'" /></div></div></div>');
         }else if(msj.texto.match(patronvideo)){
         	alert("Es un video");
-        	$("#chat").append('<div class="caja" id="mensajeUsuario"><div class="caja total cabeceraMsj" style="background-color:'+msj.randomColor+';"><p>'+msj.nick+'</p></div><div class="caja total cuerpoMsj"><div class="caja centrar-contenido"><video width="320" height="240" class="ed-video" controls><source src="'+msj.texto+'" type="video/mp4"></video></div></div></div>');
+        	$("#chat").append('<div class="caja" id="mensajeUsuario"><div class="caja total cabeceraMsj" style="background-color:'+msj.randomColor+';"><p>'+msj.nick+'</p></div><div class="caja total cuerpoMsj"><div class="caja centrar-contenido" ><video width="320" height="240" class="ed-video" controls><source src="'+msj.texto+'" type="video/mp4"></video></div></div></div>');
         }
         else{
 			//$('#chat').append('<div class="caja" id="mensajeUsuario"><div class="caja total cabeceraMsj"><p>'+msj.nick+'</p></div><div class="caja total cuerpoMsj">'+msj.texto+'</div></div>');
@@ -169,6 +171,14 @@ function notificar(texto,tipo){
 	if(tipo=="error"){
 		$("#notificaciones").hide().html('').html(texto).css("background","red").fadeIn(3000).fadeOut(1000);
 	}
+}
+
+function regresarALogin(){
+	alert("Has sido desconectado del chat, Por favor logueate nuevamente");
+	$('#contChat').hide();
+	$('#contIdentificacion').show(100);
+	location.reload();
+
 }
 
 

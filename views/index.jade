@@ -177,6 +177,10 @@ html
 				border-radius:5px;
 				text-align:center;
 			}
+			#avisoDesconexion{
+				height:100
+					px;
+			}
 			/*
 			::-webkit-scrollbar{
 				width:5px;
@@ -214,6 +218,8 @@ html
 		script(src="/socket.io/socket.io.js")
 		script(src="/static/scripts/usuario.js")
 	body
+		div(class="grupo")
+			div(class="caja movil-100 centro tablet-75 web-50" id="avisoDesconexion")
 		div(id="notificaciones" class="grupo total")
 		div(class="grupo total" id="cabecera")
 			h1 Chat con websockets
