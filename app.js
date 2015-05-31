@@ -2,8 +2,11 @@ var express=require('express');
 var app=express();
 var server=require('http').Server(app);
 var io=require('socket.io')(server);
+var escape=require('html-escape');
 
 var lista={};
+var listsockets={};
+
 
 var PORT=process.env.port || 8000;
 
@@ -19,11 +22,8 @@ app.get('*',function(req,res){
 	res.render('index');
 });
 
-
-
 	io.sockets.on('connection',function(socket){
 	console.log('Nuevo cliente conectado');
-
 	
 	//Identificacion de usuario
 	
@@ -38,7 +38,7 @@ app.get('*',function(req,res){
 		console.log("Nombre recibido: "+user);
 		socket.nickname=user;
 		lista[user]=user;
-
+		listsockets[socket]=socket;
 		}
 
 		datos=[user,r];
@@ -52,9 +52,9 @@ app.get('*',function(req,res){
 
 
 	socket.on('nuevoMensaje',function(msj){
-
 		if(lista[msj['nick']]){
 			console.log("Nuevo msj de "+ msj['nick']+": "+msj['texto']);
+			msj['texto']=escape(msj['texto']);
 			socket.randomColor=msj['randomColor'];
 			io.sockets.emit('mensaje',msj);
 		}else{
@@ -63,10 +63,11 @@ app.get('*',function(req,res){
 		
 	});
 
-	socket.on('envioImagen',function(img){
-		if(lista[img['nick']]){
-			console.log("Imagen recibida: "+img["texto"]);
-			io.sockets.emit('mensaje',img);
+	socket.on('envioImagen',function(msj){
+		if(lista[msj['nick']]){
+			console.log("Imagen recibida: "+msj["texto"]);
+			msj['texto']=escape(msj['texto']);
+			io.sockets.emit('mensaje',msj);
 		}else{
 			socket.emit('no_encontrado');
 		}
@@ -77,6 +78,7 @@ app.get('*',function(req,res){
 		if(lista[socket.nickname]){
 			
 			var msj={
+				tipo:'1',
 				nick:socket.nickname,
 				texto:"¡se ha desconectado del chat!",
 				randomColor:socket.randomColor

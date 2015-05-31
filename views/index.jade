@@ -41,7 +41,7 @@ html
 				border-style:none;
 			}
 			#notificaciones{
-				width:500px;
+				/*width:500px;
 				/*vertical-align:top;*/
 				-moz-border-radius:15px;
 				text-align:center;
@@ -178,49 +178,32 @@ html
 				text-align:center;
 			}
 			#avisoDesconexion{
-				height:100
-					px;
+				display:none;
+				position:absolute;
+
+				overflow:visible;
+				background-color:#D48787;
+				text-align:center;
 			}
-			/*
-			::-webkit-scrollbar{
-				width:5px;
-				height:5px;
-				background:#313C40;
-				width:5px;
-				height:5px;
+			#avisoDesconexion{
+				color:white;
 			}
-			::-webkit-scrollbar-button{
-				width:5px;
-				height:5px;
-				border-radius:3px;
-				background-color:black;
-			}
-			::-webkit-scrollbar-track{
-				width:5px;
-				height:5px;
-				background-color:orange;
+			#contDesconexion{
+				z-index:99;
+				position:fixed;
 			}
 
-			::-webkit-scrollbar-track-piece{
-				width:5px;
-				height:5px;
-				background-color:#313C40;
-			}
-			::-webkit-scrollbar-thumb{
-				width:5px;
-				height:5px;
-				background-color:#5D5AA4;
-			}
-			*/
 
 		script(src="/static/scripts/jquery-2.1.4.js")
 		link(rel="stylesheet", type="text/css", href="/static/css/ed-grid.css")
 		script(src="/socket.io/socket.io.js")
 		script(src="/static/scripts/usuario.js")
 	body
-		div(class="grupo")
-			div(class="caja movil-100 centro tablet-75 web-50" id="avisoDesconexion")
-		div(id="notificaciones" class="grupo total")
+		div(class="grupo total centrar-contenido" id="contDesconexion")
+			div(class="caja" id="avisoDesconexion")
+				h1 Usted ha sido desconectado Ingresa nuevamente!
+		div(class="grupo total")
+			div(id="notificaciones" class="caja total")
 		div(class="grupo total" id="cabecera")
 			h1 Chat con websockets
 			h3 Servidor con express+ socket.io+ node.js
@@ -245,7 +228,7 @@ html
 							input(type="submit",value="Enviar",id="btEnviar")
 						div(class="caja base-1-8 no-padding")
 							div(class="caja" id="contenedorfile")
-							input(type="file" id="imgfile")
+							input(type="file" id="files")
 			div(class="caja tablet-25")
 				div(class="caja centrar-contenido" id="usuario")
 				div(class="caja" id="listaUsuarios")
